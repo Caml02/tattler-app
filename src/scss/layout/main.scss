@@ -54,14 +54,15 @@
     .map-wrapper {
       overflow-y: auto;
       grid-column: 1; /* El contenido ocupará la única columna */
-      grid-row: 1 / span 2; /* La searchBar ocupará dos filas completas */
+      grid-row: 2;
+      /* La searchBar ocupará dos filas completas */
       height: 100%;
     }
   
     .searchbar-wrapper {
       overflow-y: auto;
       grid-column: 1; /* La searchBar ocupará la única columna */
-      grid-row: 2; /* El searchBar ocupará la segunda fila */
+      grid-row: 1 / span 2; /* El searchBar ocupará la segunda fila */
       height: 100%;
     }
   
