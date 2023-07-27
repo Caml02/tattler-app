@@ -9,7 +9,7 @@ app.use(express.json()); // Para analizar el cuerpo de las solicitudes en format
 
 
 // Conexión a la base de datos de MongoDB Atlas
-mongoose.connect('mongodb+srv://TechGhostW:BlancN13@cluster0.b8y8yrh.mongodb.net/tattler-app', {
+mongoose.connect('mongodb+srv://TechGhostW:@cluster0.b8y8yrh.mongodb.net/tattler-app', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
