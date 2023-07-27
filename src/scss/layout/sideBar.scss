@@ -1,0 +1,40 @@
+// Importa Bootstrap para utilizar sus estilos como base
+@import 'bootstrap';
+
+// Estilos para el sidebar
+#sideBar {
+
+  .sidebar {
+    ul {
+      list-style: none;
+      margin: 1rem;
+
+      li {
+        margin-bottom: 10px;
+
+        // Estilos para el botón con icono
+        a.btn {
+          display: block;
+          padding: 10px 15px;
+          color: black;
+          border-radius: 5px;
+          text-decoration: none;
+          transition: opacity 0.3s;
+          margin: auto;
+
+          // Icono
+          &::before {
+            font-family: 'Bootstrap Icons';
+            display: inline-block;
+            margin-right: 5px;
+          }
+
+          // Estilo al pasar el mouse por encima
+          &:hover {
+            opacity: 0.8; 
+          }
+        }
+      }
+    }
+  }
+}

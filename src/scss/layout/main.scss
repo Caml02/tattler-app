@@ -1,0 +1,73 @@
+@import '../base/mixins.scss';
+
+.main {
+  display: grid;
+  grid-template-columns: 0.5fr 3.5fr 6fr;
+  height: 100vh;
+  margin-top: 1px;
+
+  .sidebar-wrapper {
+    grid-column: 1; /* La sideBar ocupará la primera columna */
+  }
+
+  .searchbar-wrapper {
+    overflow-y: auto;
+    grid-column: 2; /* La searchBar ocupará la segunda columna */
+  }
+  
+  .map-wrapper {    overflow-y: auto;
+    grid-column: 3; /* El contenido ocupará la tercera columna */
+    height: 100vh;
+  }
+
+  @media (max-width: 768px) {
+    display: grid;
+    grid-template-columns: 3fr 7fr; 
+    grid-template-rows: 1fr;
+
+    .sidebar-wrapper {
+      display: none;
+    }
+
+    .searchbar-wrapper {
+      overflow-y: auto;
+      grid-column: 1; /* La searchBar ocupará la primera columna */
+      height: 100%;
+    }
+
+    .map-wrapper {
+      overflow-y: auto;
+      grid-column: 2; /* El contenido ocupará la segunda columna */
+      height: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    display: grid;
+    grid-template-columns: 1fr; 
+    grid-template-rows: 1fr 1fr;
+  
+    .sidebar-wrapper {
+      display: none;
+    }
+
+    .map-wrapper {
+      overflow-y: auto;
+      grid-column: 1; /* El contenido ocupará la única columna */
+      grid-row: 1 / span 2; /* La searchBar ocupará dos filas completas */
+      height: 100%;
+    }
+  
+    .searchbar-wrapper {
+      overflow-y: auto;
+      grid-column: 1; /* La searchBar ocupará la única columna */
+      grid-row: 2; /* El searchBar ocupará la segunda fila */
+      height: 100%;
+    }
+  
+  }
+  
+ 
+}
+
+
