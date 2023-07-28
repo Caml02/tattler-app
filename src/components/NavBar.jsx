@@ -16,10 +16,13 @@ const NavBar = () => {
       <div className="offcanvas-body">
         <ul className="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li className="nav-item">
-            <a className="nav-link active" aria-current="page" href="#">Home</a>
+            <a className="nav-link" aria-current="page" href="/">Home</a>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">Guardados</a>
+            <a className="nav-link" href="/">Guardados</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" href="/">Recientes</a>
           </li>
         </ul>
       </div>
