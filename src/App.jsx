@@ -4,22 +4,21 @@ import SearchBar from './components/SearchBar';
 import NavBar from './components/NavBar';
 import Map from './components/Map';
 import './scss/App.scss';
-import './App.css'
-import './logo.svg'
 
 function App() {
+
   return (
-    <div>     
+    <div>
       <NavBar />
       <div className="main">
         <div className="sidebar-wrapper">
           <SideBar />
         </div>
-      <div className="searchbar-wrapper">
-        <SearchBar />
-      </div>
+        <div className="searchbar-wrapper">
+          <SearchBar />
+        </div>
         <div className="map-wrapper">
-        <Map />
+          <Map />
         </div>
       </div>
     </div>

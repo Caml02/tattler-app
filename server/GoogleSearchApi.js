@@ -13,6 +13,7 @@ function googleSearch(engine, q, latitude, longitude) {
       hl: "es"
     };
 
+
     search.json(params, (data) => {
       resolve(data);
     });

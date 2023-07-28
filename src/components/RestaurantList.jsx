@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -10,11 +11,10 @@ const RestaurantList = ({ results, index}) => {
     if (!hours) {
       return "Horario no disponible";
     }
-  
+
     return Object.keys(hours).map((day) => (
       <div key={day}>
-        <strong>{day.charAt(0).toUpperCase() + day.slice(1)}:</strong>{" "}
-        {hours[day]?.open_now ? "Abierto" : "Cerrado"}
+        <strong>{day.charAt(0).toUpperCase() + day.slice(1)}:</strong> {hours[day]}
       </div>
     ));
   };

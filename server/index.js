@@ -3,13 +3,17 @@ const app = express();
 const cors = require('cors');
 const mongoose = require('mongoose');
 const googleSearch = require('./GoogleSearchApi');
+require("dotenv").config();
 
 app.use(cors());
 app.use(express.json()); // Para analizar el cuerpo de las solicitudes en formato JSON
 
 
 // Conexión a la base de datos de MongoDB Atlas
-mongoose.connect('mongodb+srv://TechGhostW:@cluster0.b8y8yrh.mongodb.net/tattler-app', {
+
+const mongoURI = process.env.REACT_APP_MONGODB_URI;
+
+mongoose.connect(mongoURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })

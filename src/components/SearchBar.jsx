@@ -32,7 +32,6 @@ const SearchBar = () => {
   return (
     <div id='searchBar'>
       <div className='d-flex container'>
-      
         <input
           className="form-control me-2"
           type="text"
@@ -42,6 +41,14 @@ const SearchBar = () => {
           onChange={(e) => setQuery(e.target.value)}
         />
         <button onClick={handleSearch} className="btn btn-outline-success">Buscar</button>
+        <div className='dropdown'>
+        <button id='filter-btn' className='btn btn-outline-success bi bi-funnel-fill' data-bs-toggle='dropdown' aria-expanded='false'></button>
+        <ul className='dropdown-menu'>
+          <li className='dropdown-item '>Abierto</li>
+          <li className='dropdown-item '>Para Llevar</li>
+          <li className='dropdown-item '>A domicilio</li>
+        </ul>
+        </div>
       </div>
       <div className='RestaurantList'>
           {results && results.local_results && results.local_results.length > 0 && (
