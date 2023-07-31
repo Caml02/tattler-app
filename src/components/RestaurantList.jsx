@@ -1,8 +1,7 @@
-
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const RestaurantList = ({ results, index}) => {
+const RestaurantList = ({results, index}) => {
   const { operating_hours, gps_coordinates } = results.local_results[0];
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -19,7 +18,6 @@ const RestaurantList = ({ results, index}) => {
     ));
   };
   
-
   // Función para construir la URL de Google Maps
   const buildGoogleMapsUrl = (latitude, longitude) => {
     return `https://www.google.com/maps?q=${latitude},${longitude}`;

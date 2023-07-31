@@ -38,3 +38,19 @@
     }
   }
 }
+
+
+/* MODAL CONTENT - SAVE */
+
+
+/* Saved List Group */
+
+.saved-list-group li {
+  display: flex;
+  flex-direction: column;
+
+  .btn {
+    align-items: flex;
+  }
+
+}

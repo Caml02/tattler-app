@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const googleSearch = require('../GoogleSearchApi');
 const Restaurant = require('../models/restaurant');
 
 // Ruta para guardar el restaurante
@@ -25,5 +24,35 @@ router.post('/save-restaurant', async (req, res) => {
     res.status(500).json({ error: 'Error al guardar el restaurante en la base de datos' });
   }
 });
+
+  router.get('/get-saved-restaurants', async (req, res) => {
+    try {
+      const restaurants = await Restaurant.find(); 
+      res.json(restaurants);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Error al obtener los restaurantes guardados' });
+    }
+  });
+
+
+  router.post('/delete-restaurant', async (req, res) => {
+    const { restaurantId } = req.body; // Aquí esperamos recibir el ID del restaurante a eliminar
+
+    try {
+      const deletedRestaurant = await Restaurant.findByIdAndDelete(restaurantId);
+      if (!deletedRestaurant) {
+        return res.status(404).json({ error: 'Restaurante no encontrado' });
+      }
+
+      // Obtener la lista actualizada de restaurantes después de eliminar uno
+      const updatedRestaurants = await Restaurant.find();
+      res.json({ message: 'Restaurante eliminado exitosamente', restaurants: updatedRestaurants });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Error al eliminar el restaurante' });
+    }
+  });
+
 
 module.exports = router;
