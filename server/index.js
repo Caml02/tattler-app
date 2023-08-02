@@ -10,8 +10,6 @@ app.use(express.json()); // Para analizar el cuerpo de las solicitudes en format
 
 
 // Conexión a la base de datos de MongoDB Atlas
-
-  const mongoURI = process.env.REACT_APP_MONGODB_URI;
   mongoose.connect(process.env.REACT_APP_MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,

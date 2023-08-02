@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+ 
 
 const RestaurantList = ({results, index}) => {
   const { operating_hours, gps_coordinates } = results.local_results[0];
   const [isFavorite, setIsFavorite] = useState(false);
+
+
 
   // Función para formatear los horarios de operación
   const formatOperatingHours = (hours) => {
@@ -23,9 +26,10 @@ const RestaurantList = ({results, index}) => {
     return `https://www.google.com/maps?q=${latitude},${longitude}`;
   };
 
-  // Función para manejar el clic en el ícono de corazón
     // Función para manejar el clic en el ícono de corazón
+
     const handleFavoriteClick = () => {
+      console.log('isFavorite:', isFavorite);
       setIsFavorite(!isFavorite);
     
       // Extraer los datos relevantes del restaurante
@@ -37,7 +41,8 @@ const RestaurantList = ({results, index}) => {
         open_state,
         isFavorite: !isFavorite, 
       };
-    
+      
+      
       // Enviar los datos del restaurante al backend
       axios.post('http://localhost:3001/save-restaurant', restaurantData)
         .then((response) => {
@@ -58,7 +63,6 @@ const RestaurantList = ({results, index}) => {
           className={isFavorite ? "bi bi-heart-fill" : "bi bi-heart"}
           onClick={handleFavoriteClick}
         ></i>
-
         <h5 className="card-title">{results.local_results[0].title}</h5>
         <a href={buildGoogleMapsUrl(gps_coordinates.latitude, gps_coordinates.longitude)} target="_blank" rel="noreferrer" className='bi-geo-alt-fill btn'>
           {results.local_results[0].address}

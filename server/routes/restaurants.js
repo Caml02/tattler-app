@@ -25,15 +25,39 @@ router.post('/save-restaurant', async (req, res) => {
   }
 });
 
-  router.get('/get-saved-restaurants', async (req, res) => {
-    try {
-      const restaurants = await Restaurant.find(); 
-      res.json(restaurants);
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Error al obtener los restaurantes guardados' });
+router.post('/save-rating', async (req, res) => {
+  const { restaurantId, rating, comments } = req.body;
+  console.log('Received rating data:', req.body);
+
+  try {
+    // Buscar el restaurante por su ID
+    const restaurant = await Restaurant.findByIdAndUpdate(
+      restaurantId,
+      { rating, comments },
+      { new: true } // Esta opción hace que Mongoose devuelva el documento actualizado en lugar del documento original
+    );
+
+    if (!restaurant) {
+      return res.status(404).json({ error: 'Restaurante no encontrado' });
     }
-  });
+
+    console.log('Rating saved for restaurant:', restaurant);
+    res.status(201).json({ rating: restaurant.rating, comments: restaurant.comments });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error al guardar la calificación y comentarios del restaurante' });
+  }
+});
+
+router.get('/get-saved-restaurants', async (req, res) => {
+  try {
+    const restaurants = await Restaurant.find(); 
+    res.json(restaurants);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error al obtener los restaurantes guardados' });
+  }
+});
 
 
   router.post('/delete-restaurant', async (req, res) => {
