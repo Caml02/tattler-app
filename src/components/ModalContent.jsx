@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import RatingModal from './RatingModal';
 
   const ModalContent = ({ modalType, isOpen, restaurants, onUpdateRestaurants }) => {
     const [localRestaurants, setLocalRestaurants] = useState([]);
@@ -79,7 +78,7 @@ import RatingModal from './RatingModal';
 
       const getCoordinatesFromAddress = async (address) => {
           try {
-            const apiKey = '';
+            const apiKey = 'AIzaSyD399TsNsz-1pOdSKa9hILqTYUonK9T-m4';
             const encodedAddress = encodeURIComponent(address);
             const response = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${encodedAddress}&key=${apiKey}`);
             const { results } = response.data;
